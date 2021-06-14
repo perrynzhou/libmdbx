@@ -268,16 +268,22 @@ namespace mdbx {
 
 [[noreturn]] __cold void throw_max_length_exceeded() {
   throw std::length_error(
-      "mdbx:: exceeded the maximal length of data/slice/buffer");
+      "mdbx:: Exceeded the maximal length of data/slice/buffer.");
 }
 
 [[noreturn]] __cold void throw_too_small_target_buffer() {
-  throw std::length_error("mdbx:: the target buffer is too small");
+  throw std::length_error("mdbx:: The target buffer is too small.");
 }
 
 [[noreturn]] __cold void throw_out_range() {
-  throw std::out_of_range("mdbx:: slice or buffer method was called with "
-                          "an argument that exceeds the length");
+  throw std::out_of_range("mdbx:: Slice or buffer method was called with "
+                          "an argument that exceeds the length.");
+}
+
+[[noreturn]] __cold void throw_allocators_mismatch() {
+  throw std::logic_error(
+      "mdbx:: An allocators mismatch, so an object could not be transferred "
+      "into an incompatible memory allocation scheme.");
 }
 
 __cold exception::exception(const ::mdbx::error &error) noexcept
